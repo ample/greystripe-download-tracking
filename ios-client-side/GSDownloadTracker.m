@@ -107,7 +107,7 @@
 
 + (void)trackInternalWithAppID:(NSString *)a_appID
 {
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+  @autoreleasepool {
     // first check to see whether we've already informed Greystripe of this download
     NSFileManager * fm = [NSFileManager defaultManager];
     NSString * cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -133,9 +133,7 @@
             [fm createFileAtPath:filePath contents:nil attributes:nil];
         }
     }
-
-    // clean up
-    [pool release];
+  }
 }
 
 + (void)trackWithAppID:(NSString *)a_appID
